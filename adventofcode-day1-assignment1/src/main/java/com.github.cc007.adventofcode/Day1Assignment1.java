@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-public class Assignment {
+public class Day1Assignment1 {
     public static void main(String[] args) throws IOException {
-        try (InputStream is = Assignment.class.getResourceAsStream("/input.txt");
+        try (InputStream is = Day1Assignment1.class.getResourceAsStream("/input.txt");
              Reader reader = new InputStreamReader(is);
              BufferedReader bufferedReader = new BufferedReader(reader)) {
             int totalFuelRequirements = 0;
@@ -18,10 +18,10 @@ public class Assignment {
                  mass = getNextMass(bufferedReader)) {
                 int moduleFuelRequirements = getFuelRequirements(mass);
 
-                System.out.println("Requirements for mass " + mass + ": " + moduleFuelRequirements);
+                System.out.println("Required fuel for mass " + mass + ": " + moduleFuelRequirements);
                 totalFuelRequirements += moduleFuelRequirements;
             }
-            System.out.println("Total requirements: " + totalFuelRequirements);
+            System.out.println("Total required fuel: " + totalFuelRequirements);
         }
     }
 
