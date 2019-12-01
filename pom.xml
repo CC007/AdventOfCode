@@ -10,6 +10,7 @@
     <version>2019</version>
     <modules>
         <module>adventofcode-day1-assignment1</module>
+        <module>adventofcode-day1-assignment2</module>
     </modules>
 
 
