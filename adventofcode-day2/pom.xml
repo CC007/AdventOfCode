@@ -9,7 +9,7 @@
         <version>2019</version>
     </parent>
 
-    <artifactId>adventofcode-day2-assignment1</artifactId>
+    <artifactId>adventofcode-day2</artifactId>
 
     <build>
         <resources>
