@@ -20,8 +20,8 @@ public class Computer implements Runnable {
                 .collect(Collectors.toList());
     }
 
-    public void fixIntCode(Consumer<List<Integer>> intCodeFixer) {
-        intCodeFixer.accept(memory);
+    public void fixMemory(Consumer<List<Integer>> memoryFixer) {
+        memoryFixer.accept(memory);
     }
 
     @Override

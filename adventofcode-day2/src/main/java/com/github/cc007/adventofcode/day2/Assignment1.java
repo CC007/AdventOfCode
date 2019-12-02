@@ -16,7 +16,7 @@ public class Assignment1 {
             //String memoryString = "1,0,0,0,99";
             //String memoryString = "1,9,10,3,2,3,11,0,99,30,40,50";
             Computer computer = new Computer(memoryString);
-            computer.fixIntCode(Assignment1::twelveOhTwoProgramAlarmFix);
+            computer.fixMemory(Assignment1::twelveOhTwoProgramAlarmFix);
             computer.run();
             System.out.println("Final intCode: " + computer);
             System.out.println("Final result: " + computer.toString().split(",")[0]);

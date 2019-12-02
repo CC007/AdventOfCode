@@ -25,7 +25,7 @@ public class Assignment2 {
                 Computer computer = new Computer(memoryString);
                 int finalNoun = noun;
                 int finalVerb = verb;
-                computer.fixIntCode((memory) -> Assignment2.customFix(memory, finalNoun, finalVerb));
+                computer.fixMemory((memory) -> Assignment2.customFix(memory, finalNoun, finalVerb));
                 computer.run();
                 System.out.println("Final intCode: " + computer);
                 String result = computer.toString().split(",")[0];
