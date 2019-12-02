@@ -12,6 +12,7 @@
     <modules>
         <module>adventofcode-day1</module>
         <module>adventofcode-day2</module>
+        <module>adventofcode-day3</module>
     </modules>
 
     <properties>
