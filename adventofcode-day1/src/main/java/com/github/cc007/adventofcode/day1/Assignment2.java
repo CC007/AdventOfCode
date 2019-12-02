@@ -1,4 +1,4 @@
-package com.github.cc007.adventofcode;
+package com.github.cc007.adventofcode.day1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-public class Day1Assignment2 {
+public class Assignment2 {
 
     public static void main(String[] args) throws IOException {
-        try (InputStream is = Day1Assignment2.class.getResourceAsStream("/input.txt");
+        try (InputStream is = Assignment2.class.getResourceAsStream("/input.txt");
              Reader reader = new InputStreamReader(is);
              BufferedReader bufferedReader = new BufferedReader(reader)) {
             int totalFuelRequirements = 0;
