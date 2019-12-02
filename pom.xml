@@ -11,6 +11,7 @@
     <modules>
         <module>adventofcode-day1-assignment1</module>
         <module>adventofcode-day1-assignment2</module>
+        <module>adventofcode-day2</module>
     </modules>
 
 
