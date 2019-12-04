@@ -11,7 +11,7 @@ public class LineSectionTuple {
     private final LineSection first;
     private final LineSection second;
 
-    public Intersection getIntersection(List<LineSection> wire1LineSections, List<LineSection> wire2LineSections) {
+    public Intersection getIntersectionPoint(List<LineSection> wire1LineSections, List<LineSection> wire2LineSections) {
         return new Intersection(wire1LineSections.indexOf(getFirst()), wire2LineSections.indexOf(getSecond()));
     }
 
@@ -19,7 +19,7 @@ public class LineSectionTuple {
         return new Intersection(wireLineSections.indexOf(getFirst()), wireLineSections.indexOf(getSecond()));
     }
 
-    public Point getIntersection(){
+    public Point getIntersectionPoint(){
         if(this.getFirst().isVertical()) {
             return new Point(this.getFirst().getAsymptote(), this.getSecond().getAsymptote());
         } else {
@@ -29,6 +29,6 @@ public class LineSectionTuple {
 
     @Override
     public String toString() {
-        return getIntersection().toString();
+        return getIntersectionPoint().toString();
     }
 }

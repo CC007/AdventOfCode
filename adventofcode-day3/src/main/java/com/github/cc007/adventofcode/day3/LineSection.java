@@ -1,10 +1,12 @@
 package com.github.cc007.adventofcode.day3;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class LineSection {
     private final Point p1;
     private final Point p2;
@@ -32,10 +35,10 @@ public class LineSection {
 
     public static List<Point> getIntersectionPoints(List<LineSection> wire1LineSections, List<LineSection> wire2LineSections) {
         List<LineSectionTuple> intersectionLineSections = getIntersectionLineSections(wire1LineSections, wire2LineSections);
-        return intersectionLineSections.stream().map(LineSectionTuple::getIntersection).collect(Collectors.toList());
+        return intersectionLineSections.stream().map(LineSectionTuple::getIntersectionPoint).collect(Collectors.toList());
     }
 
-    public static List<LineSectionTuple> getIntersectionLineSections(List<LineSection> wire1LineSections, List<LineSection> wire2LineSections) {
+    public static List<LineSectionTuple> getIntersectionLineSections(Collection<LineSection> wire1LineSections, Collection<LineSection> wire2LineSections) {
         List<LineSectionTuple> intersections = new ArrayList<>();
         for (LineSection wire1LineSection : wire1LineSections) {
             for (LineSection wire2LineSection : wire2LineSections) {
@@ -48,7 +51,7 @@ public class LineSection {
 
     public static Optional<Point> getIntersectionPoint(LineSection lineSection1, LineSection lineSection2) {
         Optional<LineSectionTuple> intersectionLineSections = getIntersectionLineSections(lineSection1, lineSection2);
-        return intersectionLineSections.map(LineSectionTuple::getIntersection);
+        return intersectionLineSections.map(LineSectionTuple::getIntersectionPoint);
     }
 
     public static Optional<LineSectionTuple> getIntersectionLineSections(LineSection lineSection1, LineSection lineSection2) {
@@ -92,6 +95,10 @@ public class LineSection {
 
     public int getLength() {
         return isVertical() ? Math.abs(p1.getY() - p2.getY()) : Math.abs(p1.getX() - p2.getX());
+    }
+
+    public LineSection getFlipped() {
+        return new LineSection(p2, p1);
     }
 
     @Override
