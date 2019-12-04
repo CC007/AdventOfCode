@@ -21,7 +21,7 @@ public class Assignment1 {
             List<LineSection> wire2LineSections = LineSection.fromTrace(wire2Trace);
             System.out.println(wire1LineSections);
             System.out.println(wire2LineSections);
-            List<Point> intersections = LineSection.getIntersections(wire1LineSections, wire2LineSections);
+            List<Point> intersections = LineSection.getIntersectionPoints(wire1LineSections, wire2LineSections);
             System.out.println(intersections);
             System.out.println(getLowestManhattenDistance(intersections));
         }
@@ -29,7 +29,8 @@ public class Assignment1 {
 
     private static int getLowestManhattenDistance(List<Point> intersections) {
         return intersections.stream()
-                .map((point -> Math.abs(point.getX()) + Math.abs(point.getY())))
-                .reduce(Integer.MAX_VALUE, Math::min);
+                .map(Point::getManhattanDistance)
+                .reduce(Math::min)
+                .orElseThrow(RuntimeException::new);
     }
 }
