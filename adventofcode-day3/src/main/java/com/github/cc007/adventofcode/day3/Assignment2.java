@@ -15,10 +15,10 @@ public class Assignment2 {
         try (InputStream is = Assignment1.class.getResourceAsStream("/input.txt");
              Reader reader = new InputStreamReader(is);
              BufferedReader bufferedReader = new BufferedReader(reader)) {
-//            String wire1Trace = bufferedReader.readLine();
-//            String wire2Trace = bufferedReader.readLine();
-            String wire1Trace = "R8,U5,L5,D3";
-            String wire2Trace = "U7,R6,D4,L4";
+            String wire1Trace = bufferedReader.readLine();
+            String wire2Trace = bufferedReader.readLine();
+//            String wire1Trace = "R8,U5,L5,D3";
+//            String wire2Trace = "U7,R6,D4,L4";
 //            String wire1Trace = "R75,D30,R83,U83,L12,D49,R71,U7,L72";
 //            String wire2Trace = "U62,R66,U55,R34,D71,R55,D58,R83";
 //            String wire1Trace = "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51";
@@ -27,8 +27,12 @@ public class Assignment2 {
             List<LineSection> wire2LineSections = LineSection.fromTrace(wire2Trace);
             System.out.println(wire1LineSections);
             System.out.println(wire2LineSections);
+            System.out.println(wire1LineSections.size());
+            System.out.println(wire2LineSections.size());
             List<LineSectionTuple> intersectionLineSections = LineSection.getIntersectionLineSections(wire1LineSections, wire2LineSections);
             System.out.println(intersectionLineSections);
+
+            System.out.println(intersectionLineSections.size());
             System.out.println("Fewest combined steps: " + getFewestCombinedSteps(intersectionLineSections, wire1LineSections, wire2LineSections));
         }
     }
@@ -64,7 +68,7 @@ public class Assignment2 {
                 .filter(shortcut -> shortcut.getStart() < shortcut.getEnd())
                 .collect(Collectors.toList());
         if (index == 0) {
-            printWireLoops(wireLoops, wireIntersections);
+            //printWireLoops(wireLoops, wireIntersections);
         }
         if (index >= intersectionIndex) {
             int steps = wireLineSections.get(intersectionIndex).getP1().getManhattanDistance(intersectionPoint);
@@ -84,16 +88,16 @@ public class Assignment2 {
 
         System.out.println(indent + "+-Subtotal: " + totalSteps);
 
-        if (loopIntersection.isPresent()) {
-            LineSection lineSectionStart = wireLineSections.get(loopIntersection.get().getStart());
-            LineSection lineSectionEnd = wireLineSections.get(loopIntersection.get().getEnd());
-            int shortcutSteps = lineSectionStart.getP1().getManhattanDistance(lineSectionEnd.getP2());
-            System.out.println(indent + "| OR steps += " + shortcutSteps + " (using " + loopIntersection.get() + ")");
-            int totalStepsIfShortcut = shortcutSteps + getSteps(intersectionIndex, wireLoops, wireLineSections, intersectionPoint, loopIntersection.get().getEnd() + 1, indent + "| ");
-            totalSteps = Math.min(totalSteps, totalStepsIfShortcut);
-
-            System.out.println(indent + "+-Subtotal: " + totalStepsIfShortcut);
-        }
+//        if (loopIntersection.isPresent()) {
+//            LineSection lineSectionStart = wireLineSections.get(loopIntersection.get().getStart());
+//            LineSection lineSectionEnd = wireLineSections.get(loopIntersection.get().getEnd());
+//            int shortcutSteps = lineSectionStart.getP1().getManhattanDistance(lineSectionEnd.getP2());
+//            System.out.println(indent + "| OR steps += " + shortcutSteps + " (using " + loopIntersection.get() + ")");
+//            int totalStepsIfShortcut = shortcutSteps + getSteps(intersectionIndex, wireLoops, wireLineSections, intersectionPoint, loopIntersection.get().getEnd() + 1, indent + "| ");
+//            totalSteps = Math.min(totalSteps, totalStepsIfShortcut);
+//
+//            System.out.println(indent + "+-Subtotal: " + totalStepsIfShortcut);
+//        }
         return totalSteps;
     }
 

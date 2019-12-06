@@ -10,7 +10,7 @@ public class Point {
     private final int y;
 
     public int getManhattanDistance(Point that) {
-        return Math.abs(getManhattanDistance() - that.getManhattanDistance());
+        return Math.abs(this.getX() - that.getX()) + Math.abs(this.getY() - that.getY());
     }
 
     public int getManhattanDistance() {
